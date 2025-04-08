@@ -51,3 +51,5 @@ jobs:
     needs: promote-version
     uses: ./.github/workflows/build.yaml
     secrets: inherit
+    permissions:
+      id-token: write
