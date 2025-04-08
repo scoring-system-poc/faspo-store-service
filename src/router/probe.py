@@ -1,7 +1,11 @@
+import logging
 import fastapi
 
 
-router = fastapi.APIRouter()
+logger = logging.getLogger(__name__)
+router = fastapi.APIRouter(
+    tags=["probe"]
+)
 
 
 @router.get("/alive")
