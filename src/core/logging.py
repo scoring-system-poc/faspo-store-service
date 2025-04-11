@@ -1,6 +1,7 @@
 import logging
 import logging.config
 import azure.monitor.opentelemetry
+import azure.monitor.opentelemetry.exporter
 
 from src.core.config import CONFIG
 
@@ -15,6 +16,7 @@ def setup_logging():
             "flask": {"enabled": False},
             "django": {"enabled": False},
             "psycopg2": {"enabled": False},
+
         }
     )
 
@@ -36,7 +38,7 @@ def setup_logging():
             "formatters": {
                 "stdout-fmt": {
                     "class": "logging.Formatter",
-                    "format": "%(asctime)s | %(levelname)-7s | %(name)-25s | %(funcName)-25s | %(correlation_id)-16s | %(message)s",
+                    "format": "%(asctime)s | %(levelname)-7s | %(name)-30s | %(funcName)-30s | %(correlation_id)-16s | %(message)s",
                 },
             },
             "handlers": {

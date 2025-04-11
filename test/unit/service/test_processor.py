@@ -81,4 +81,4 @@ async def test_save_item__cosmos_error_retriable(mock_cosmos):
 
     assert mock_sleep.call_count == CONFIG.COSMOS_RETRY_COUNT
     assert e.value.status_code == 503
-    assert e.value.detail == f"failed to save item after {CONFIG.COSMOS_RETRY_COUNT} retries | item=" + "{}"
+    assert e.value.detail == f"Failed to save item after {CONFIG.COSMOS_RETRY_COUNT} retries"
