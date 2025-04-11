@@ -9,9 +9,18 @@ def setup_logging():
     """
     Set up logging configuration.
     """
-    azure.monitor.opentelemetry.configure_azure_monitor(logger_name="src")
+    azure.monitor.opentelemetry.configure_azure_monitor(
+        logger_name="src",
+        instrumentation_options={
+            "flask": {"enabled": False},
+            "django": {"enabled": False},
+            "psycopg2": {"enabled": False},
+        }
+    )
 
-    logging.getLogger("azure.core.pipeline.policies.http_logging_policy").setLevel(logging.WARNING)
+    logging.getLogger("uvicorn.access").addFilter(
+        lambda record: record.getMessage().find("/probe/") == -1
+    )
 
     logging.config.dictConfig(
         {
@@ -38,6 +47,10 @@ def setup_logging():
                 },
             },
             "root": {"handlers": ["stdout-handler"], "level": CONFIG.LOG_LEVEL},
+            "loggers": {
+                "azure.monitor.opentelemetry": {"level": logging.WARNING},
+                "azure.core.pipeline.policies.http_logging_policy": {"level": logging.WARNING},
+            },
         }
     )
 
