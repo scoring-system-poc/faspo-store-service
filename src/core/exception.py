@@ -17,7 +17,11 @@ class HTTPException(fastapi.HTTPException):
         logger_lvl: int = logging.WARNING,
         logger_msg: str = None,
     ) -> None:
-        logging.getLogger(logger_name).log(level=logger_lvl, msg=f"HTTP {status_code} - {logger_msg or detail}")
+        logging.getLogger(logger_name).log(
+            level=logger_lvl,
+            msg=f"HTTP {status_code} - {logger_msg or detail}",
+            stacklevel=2,
+        )
         super().__init__(
             status_code=status_code,
             detail=detail,
