@@ -7,7 +7,7 @@ from src.api.v1 import router as v1_api_router
 
 
 @contextlib.asynccontextmanager
-def _lifespan():
+async def _lifespan(*args, **kwargs):
     setup_logging()
     yield
 
