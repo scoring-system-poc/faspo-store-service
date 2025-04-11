@@ -9,7 +9,6 @@ class Config(pydantic_settings.BaseSettings):
     # Azure
     AZURE_CLIENT_ID: str
     AZURE_TENANT_ID: str
-    AZURE_SUBSCRIPTION_ID: str
     AZURE_FEDERATED_TOKEN_FILE: str = "/var/run/secrets/azure/tokens/azure-identity-token"
 
     # CosmosDB
