@@ -27,7 +27,7 @@ def setup_logging():
             "formatters": {
                 "stdout-fmt": {
                     "class": "logging.Formatter",
-                    "format": "%(asctime)s | %(levelname)-7s | %(name)-20s | %(funcName)-20s | %(correlation_id)-16s | %(message)s",
+                    "format": "%(asctime)s | %(levelname)-7s | %(name)-25s | %(funcName)-25s | %(correlation_id)-16s | %(message)s",
                 },
             },
             "handlers": {

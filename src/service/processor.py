@@ -37,7 +37,7 @@ async def save_item(container_name: str, item: dict) -> str:
                 raise HTTPException(
                     status_code=e.status_code,
                     logger_name=__name__,
-                    logger_msg=f"failed to save: item={item}; error={e.message};",
+                    logger_msg=f"failed to save: item={item}; error={e.http_error_message};",
                 )
             else:
                 print("retry")
