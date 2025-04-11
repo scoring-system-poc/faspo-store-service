@@ -47,12 +47,12 @@ spec:
           {{- end }}
           livenessProbe:
             httpGet:
-              path: /alive
+              path: /api/v1/probe/alive
               port: 8080
             initialDelaySeconds: 1
           readinessProbe:
             httpGet:
-              path: /ready
+              path: /api/v1/probe/ready
               port: 8080
             initialDelaySeconds: 1
           resources:
