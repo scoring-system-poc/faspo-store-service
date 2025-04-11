@@ -40,7 +40,6 @@ async def save_item(container_name: str, item: dict) -> str:
                     logger_msg=f"failed to save: item={item}; error={e.http_error_message};",
                 )
             else:
-                print("retry")
                 await asyncio.sleep(
                     e.headers.get(azure.cosmos.http_constants.HttpHeaders.RetryAfterInMilliseconds, 10_000) / 1000
                 )
