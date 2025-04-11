@@ -6,9 +6,8 @@ import datetime as dt
 
 @pytest.mark.asyncio
 async def test_setup_logging(capsys) -> None:
-    from src.core.logging import setup_logging
-
-    with unittest.mock.patch("azure.monitor.opentelemetry.configure_azure_monitor"):
+    with unittest.mock.patch("azure.monitor.opentelemetry"):
+        from src.core.logging import setup_logging
         setup_logging()
 
     logging.info("Test message")
