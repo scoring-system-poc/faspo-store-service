@@ -56,6 +56,6 @@ async def save_item(container_name: str, item: dict) -> str:
 
     raise HTTPException(
         status_code=503,
-        detail=f"failed to save item after {CONFIG.COSMOS_RETRY_COUNT} retries | item={item}",
+        detail=f"Failed to save item after {CONFIG.COSMOS_RETRY_COUNT} retries",
         logger_name=__name__,
     )
