@@ -13,11 +13,13 @@ async def test_http_exception_logging(caplog) -> None:
         raise HTTPException(
             status_code=404,
             detail="Test message",
-            logger_name="test_logger",
+            logger_name=__name__,
             logger_lvl=logging.DEBUG,
         )
 
     assert len(caplog.records) == 1
     assert caplog.records[0].levelname == "DEBUG"
+    assert caplog.records[0].name == "test.unit.core.test_exception"
+    assert caplog.records[0].funcName == "test_http_exception_logging"
     assert caplog.records[0].message == "HTTP 404 - Test message"
 
