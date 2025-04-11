@@ -3,7 +3,7 @@ import httpx
 
 
 @pytest.fixture
-async def async_client(mock_environ, mock_azure_monitor, mock_cosmos) -> httpx.AsyncClient:
+async def async_client(mock_environ, mock_cosmos) -> httpx.AsyncClient:
     from main import app
 
     transport = httpx.ASGITransport(app=app)

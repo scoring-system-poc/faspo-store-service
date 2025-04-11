@@ -22,12 +22,6 @@ def mock_environ(monkeypatch) -> None:
 
 
 @pytest.fixture(autouse=True, scope="session")
-def mock_azure_monitor() -> None:
-    with unittest.mock.patch("azure.monitor.opentelemetry.configure_azure_monitor"):
-        yield
-
-
-@pytest.fixture(autouse=True, scope="session")
 def mock_cosmos() -> azure.cosmos.aio.DatabaseProxy:
     async def _list_containers():
         yield {"id": "container"}
