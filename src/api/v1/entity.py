@@ -11,8 +11,8 @@ router = fastapi.APIRouter(
 
 @router.post("/{container}")
 async def create_item(
-    container: str,
-    item: dict,
+    container: typing.Annotated[str, fastapi.Path()],
+    item: typing.Annotated[dict, fastapi.Body()],
     correlation_id: typing.Annotated[str | None, fastapi.Header()] = None,
 ) -> fastapi.responses.JSONResponse:
     """
